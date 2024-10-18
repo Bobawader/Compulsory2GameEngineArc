@@ -31,7 +31,7 @@ APlayerCharacter::APlayerCharacter() {
 
     // Initialize components with default values
     FMyPositionComponent positionComponent = { FVector(0,0,0) };
-    FMyHealthComponent healthComponent = { 80.0f, 100.0f }; // Initialize with default health values
+    FMyHealthComponent healthComponent = { 100.0f, 100.0f }; // Initialize with default health values
     FMyPotionComponent potionComponent = { 0 }; // Initialize with default potion count
     FMyInputComponent inputComponent = { FVector2D(0, 0), FVector2D(0, 0) };
 
