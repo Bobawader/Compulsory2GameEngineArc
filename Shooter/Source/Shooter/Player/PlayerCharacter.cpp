@@ -52,7 +52,7 @@ APlayerCharacter::APlayerCharacter() {
     bUseControllerRotationRoll = false;
 
     GetCharacterMovement()->bOrientRotationToMovement = true;
-    GetCharacterMovement()->RotationRate = FRotator(0.0f, 540.0f, 0.0f); // Adjusted to a more typical value
+    GetCharacterMovement()->RotationRate = FRotator(0.0f, 540.0f, 0.0f); 
 
     GetCharacterMovement()->JumpZVelocity = 300.f;
     GetCharacterMovement()->AirControl = 0.35f;
@@ -81,7 +81,7 @@ void EntityManager::DestroyEnemy(Entity entity, UWorld* worldContext)
         AMyEnemy* Enemy = *It;
         if (Enemy && Enemy->enemyEntity == entity)
         {
-            Enemy->Destroy();  // Safely destroy the actor
+            Enemy->Destroy();  // destroy the actor
             m_EntityMasks[entity].reset();  // Remove all components associated with the entity
             break;  // Exit once the enemy is found and destroyed
         }
@@ -238,7 +238,7 @@ void APlayerCharacter::Move(const FInputActionValue& Value)
 
 void APlayerCharacter::Look(const FInputActionValue& Value)
 {
-    // input is a Vector2D
+    
     FVector2D LookAxisVector = Value.Get<FVector2D>();
 
     if (Controller != nullptr)

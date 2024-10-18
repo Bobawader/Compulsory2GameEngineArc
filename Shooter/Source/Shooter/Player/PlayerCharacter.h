@@ -1,7 +1,7 @@
 
 #pragma once
 class AMyEnemy; // Forward declaration
-//class UAIPerceptionStimulusSourceComponent;
+
 
 
 
@@ -22,10 +22,8 @@ class AMyEnemy; // Forward declaration
 
 
 
-//class AMyEnemy;
 
-
-constexpr int MAX_COMPONENTS = 32;  // Adjust as needed
+constexpr int MAX_COMPONENTS = 32;  
 constexpr int MAX_ENTITIES = 1000;
 // Components
 USTRUCT()
@@ -289,7 +287,7 @@ private:
 		ASkeletalMeshActor* Inventory;
 
 	UPROPERTY(EditAnywhere, Category = "Combat")
-		FVector FireOffset;  // Offset from character location for projectile spawn
+		FVector FireOffset;  
 
 	UPROPERTY(EditDefaultsOnly, Category = "Projectile")
 		TSubclassOf<class AProjectile> ProjectileClass;
@@ -302,98 +300,3 @@ private:
 
 
 
-//class DamageSystem
-//{
-//public:
-//	// Update the system: checks enemies and applies damage, updates player health if in range
-//	void Update(EntityManager& entityManager, EntityManager::Entity playerEntity, UWorld* worldContext)
-//	{
-//		// Process all entities with health and damageable components
-//		auto entities = entityManager.GetEntitiesWithComponents<FMyHealthComponent, FMyDamageableComponent>();
-//
-//		for (auto entity : entities)
-//		{
-//			auto healthComp = entityManager.GetComponent<FMyHealthComponent>(entity);
-//			auto damageableComp = entityManager.GetComponent<FMyDamageableComponent>(entity);
-//
-//			// Check if the entity should be destroyed
-//			if (healthComp->CurrentHealth <= 0 && damageableComp->CanReceiveDamage)
-//			{
-//				// Mark entity as non-damageable
-//				damageableComp->CanReceiveDamage = false;
-//
-//				// Destroy entity if it's an enemy
-//				if (entityManager.HasComponent<FMyEnemyTagComponent>(entity))
-//				{
-//					entityManager.DestroyEnemy(entity, worldContext);
-//				}
-//			}
-//		}
-//
-//		// Apply damage to the player if conditions are met
-//		ApplyDamageToPlayer(entityManager, playerEntity, worldContext);
-//	}
-//
-//	// Apply damage to the player if enemies are in range
-//	void ApplyDamageToPlayer(EntityManager& entityManager, EntityManager::Entity playerEntity, UWorld* worldContext)
-//	{
-//		// Get the player health component
-//		auto playerHealthComp = entityManager.GetComponent<FMyHealthComponent>(playerEntity);
-//
-//		// If the player is dead or invalid, return early
-//		if (!playerHealthComp || playerHealthComp->CurrentHealth <= 0)
-//		{
-//			GEngine->AddOnScreenDebugMessage(-1, 5.f, FColor::Red, TEXT("you died"));
-//			return;
-//		}
-//
-//		// Get all entities that have a position and are marked as enemies
-//		auto enemies = entityManager.GetEntitiesWithComponents<FMyPositionComponent, FMyEnemyTagComponent>();
-//
-//		// Loop through all enemies and check if they are close enough to damage the player
-//		for (auto enemy : enemies)
-//		{
-//			auto enemyPosition = entityManager.GetComponent<FMyPositionComponent>(enemy);
-//			FVector enemyLoc = enemyPosition->Position;
-//			FVector playerLoc = entityManager.GetComponent<FMyPositionComponent>(playerEntity)->Position;
-//
-//			// Calculate the distance between the enemy and the player
-//			float distance = FVector::Dist(enemyLoc, playerLoc);
-//
-//			// If the enemy is within attack range, apply damage to the player
-//			if (distance < AttackRange)
-//			{
-//				float damageAmount = 10.f;  // You can set this damage value as needed
-//				ApplyDamage(entityManager, playerEntity, damageAmount, worldContext);
-//			}
-//		}
-//	}
-//
-//	// Apply damage to a target entity, e.g., the player or an enemy
-//	static void ApplyDamage(EntityManager& entityManager, EntityManager::Entity target, float damageAmount, UWorld* worldContext)
-//	{
-//		if (entityManager.HasComponent<FMyHealthComponent>(target))
-//		{
-//			auto healthComp = entityManager.GetComponent<FMyHealthComponent>(target);
-//
-//			if (healthComp)
-//			{
-//				// Apply damage to the entity's health
-//				healthComp->CurrentHealth -= damageAmount;
-//
-//				// If the entity's health drops to 0 or below, handle destruction
-//				if (healthComp->CurrentHealth <= 0)
-//				{
-//					// If the target is an enemy, destroy it
-//					if (entityManager.HasComponent<FMyEnemyTagComponent>(target))
-//					{
-//						entityManager.DestroyEnemy(target, worldContext);
-//					}
-//				}
-//			}
-//		}
-//	}
-//
-//private:
-//	float AttackRange = 200.f;  // Define the range within which enemies can attack the player
-//};

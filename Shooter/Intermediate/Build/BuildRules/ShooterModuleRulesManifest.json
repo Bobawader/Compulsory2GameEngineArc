@@ -1,0 +1,8 @@
+{
+	"SourceFiles": [
+		"C:\\Github\\spill\\Compulsory2GameEngine\\Shooter\\Source\\Shooter\\Shooter.Build.cs",
+		"C:\\Github\\spill\\Compulsory2GameEngine\\Shooter\\Source\\Shooter.Target.cs",
+		"C:\\Github\\spill\\Compulsory2GameEngine\\Shooter\\Source\\ShooterEditor.Target.cs"
+	],
+	"EngineVersion": "5.4.4"
+}
