@@ -1,0 +1,15 @@
+{
+    "Version": "1.2",
+    "Data": {
+        "Source": "c:\\github\\spill\\compulsory2gameengine\\shooter\\source\\shooter\\player\\combatinterface.cpp",
+        "ProvidedModule": "",
+        "PCH": "c:\\github\\spill\\compulsory2gameengine\\shooter\\intermediate\\build\\win64\\x64\\shootereditor\\development\\unrealed\\sharedpch.unrealed.project.valapi.cpp20.h.pch",
+        "Includes": [
+            "c:\\github\\spill\\compulsory2gameengine\\shooter\\intermediate\\build\\win64\\x64\\unrealeditor\\development\\shooter\\definitions.shooter.h",
+            "c:\\github\\spill\\compulsory2gameengine\\shooter\\source\\shooter\\player\\combatinterface.h",
+            "c:\\github\\spill\\compulsory2gameengine\\shooter\\intermediate\\build\\win64\\unrealeditor\\inc\\shooter\\uht\\combatinterface.generated.h"
+        ],
+        "ImportedModules": [],
+        "ImportedHeaderUnits": []
+    }
+}

@@ -71,6 +71,8 @@ APlayerCharacter::APlayerCharacter() {
 
 
     FireOffset = FVector(100.0f, 0.0f, 0.0f);
+    
+    
 }
 
 void EntityManager::DestroyEnemy(Entity entity, UWorld* worldContext)
@@ -94,6 +96,11 @@ void APlayerCharacter::BeginPlay()
     Super::BeginPlay();
 
     entityManager->GetPosition(playerEntity)->Position = GetActorLocation();
+    auto healthComp = entityManager->GetComponent<FMyHealthComponent>(playerEntity);
+    if (healthComp)
+    {
+        healthComp->CurrentHealth = healthComp->MaxHealth;  // Dynamically set CurrentHealth to MaxHealth at the start of the game
+    }
     if (APlayerController* PlayerController = Cast<APlayerController>(Controller))
     {
         if (UEnhancedInputLocalPlayerSubsystem* Subsystem = ULocalPlayer::GetSubsystem<UEnhancedInputLocalPlayerSubsystem>(PlayerController->GetLocalPlayer()))
@@ -186,11 +193,14 @@ void APlayerCharacter::TakeDamage(float damageAmount)
 
             // Clamp health to prevent going negative
             healthComp->CurrentHealth = FMath::Max(0.0f, healthComp->CurrentHealth);
+            GEngine->AddOnScreenDebugMessage(-1, 5.f, FColor::Green, FString::Printf(TEXT("New Health: %f"), healthComp->CurrentHealth));
 
             // Check if the player is dead
             if (healthComp->CurrentHealth <= 0)
             {
                 GEngine->AddOnScreenDebugMessage(1, 2, FColor::Red, TEXT("DEAD"));
+                bIsDead = true;
+
             }
         }
     }
@@ -212,6 +222,11 @@ void APlayerCharacter::SetupStimulusSource()
 void APlayerCharacter::Move(const FInputActionValue& Value)
 {
     // Get the movement vector from the input value
+
+    if (bIsDead)
+    {
+        return;  // Prevent any movement
+    }
     FVector2D MovementVector = Value.Get<FVector2D>();
 
     // Update ECS input component

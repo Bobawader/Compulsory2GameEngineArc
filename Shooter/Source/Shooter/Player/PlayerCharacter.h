@@ -273,7 +273,7 @@ public:
 	void TakeDamage(float damageAmount);
 private:
 	void Interact();
-	
+	bool bIsDead = false;
 
 	std::unique_ptr<EntityManager> entityManager;
 	EntityManager::Entity playerEntity; // Declare playerEntity

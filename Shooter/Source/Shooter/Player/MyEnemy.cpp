@@ -63,13 +63,6 @@ void AMyEnemy::InitializeECS(EntityManager* manager)
 
 }
 
-//void AMyEnemy::BeginPlay()
-//{
-//    Super::BeginPlay();
-//    if (entityManager) {
-//        UpdateECSHealth();
-//    }
-//}
 
 void AMyEnemy::BeginPlay()
 {
@@ -129,7 +122,7 @@ int AMyEnemy::MeleeAttack_Implementation()
     
         // Define damage amount
      float damageAmount = 10.0f; // Adjust as needed
-
+     
         // Apply damage to the player
      playerCharacter->TakeDamage(damageAmount);
    
